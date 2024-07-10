@@ -121,7 +121,7 @@
       <div class="row text-center">
         <h2 class="divider line one-line" content>About Me</h2>
         <div class="row justify-content-center fs-5 text-center mt-5">
-          <p>Seorang mahasiswa dari Universitas Galuh Program Studi Sistem Informasi yang bergelut dibidang Desain, Programming dan Animasi.</p>
+          <p>Seorang mahasiswa dari Universitas Galuh Program Studi Sistem Informasi yang bergelut di berbagai bidang.</p>
           <p></p>
           <p></p>
           <p></p>
