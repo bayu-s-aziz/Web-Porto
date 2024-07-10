@@ -316,17 +316,23 @@
     });
 
     $(document).ready(function() {
-      // fungsi untuk mengambil data and menampilkan skills diprogress bars
+      // fungsi untuk mengambil data dan menampilkan skills di progress bars
+      fetchSkills();
+
       function fetchSkills() {
         $.ajax({
           type: "GET",
           url: "http://localhost/web-porto/si-admin/api/skills/read.php",
           success: function(response) {
             const skills = response.body;
+
+            // Filter skills based on user_id = 1
+            const filteredSkills = skills.filter(skill => skill.user_id === 1);
+
             let skillsHtmlColumn1 = '';
             let skillsHtmlColumn2 = '';
 
-            skills.forEach((skill, index) => {
+            filteredSkills.forEach((skill, index) => {
               const skillHtml = `
             <div class="mb-3">
               <h6>${skill.skill_name}</h6>
@@ -350,33 +356,6 @@
           }
         });
       }
-
-      fetchSkills();
-      // fungsi mengambil data user_id ,skill_name dan rating dari Skills
-      function showAll() {
-        $.ajax({
-          type: "GET",
-          contentType: "application/json",
-          url: "http://localhost/web-porto/si-admin/api/skills/read.php?id=1",
-          success: function(response) {
-            var json = response.body;
-            var dataSet = [];
-            for (var i = 0; i < json.length; i++) {
-              var sub_array = {
-                user_id: json[i].user_id,
-                skill_name: json[i].skill_name,
-                rating: json[i].rating,
-              };
-              dataSet.push(sub_array);
-            }
-
-          },
-          error: function(err) {
-            console.log(err);
-          },
-        });
-      }
-      showAll();
     });
   </script>
 

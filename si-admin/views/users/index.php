@@ -1,8 +1,8 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['user'])) {
-//     return header('Location: http://localhost/web-porto/si-admin/views/Login/');
-// }
+session_start();
+if (!isset($_SESSION['user'])) {
+    return header('Location: http://localhost/web-porto/si-admin/views/login/');
+}
 ?>
 <!doctype html>
 <html lang="en">
