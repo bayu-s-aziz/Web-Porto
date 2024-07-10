@@ -326,7 +326,7 @@
           success: function(response) {
             const skills = response.body;
 
-            // Filter skills based on user_id = 1
+            // Filter skills sesuai dengan user_id
             const filteredSkills = skills.filter(skill => skill.user_id === 1);
 
             let skillsHtmlColumn1 = '';
