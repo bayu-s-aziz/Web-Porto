@@ -114,77 +114,131 @@ if (!isset($_SESSION['user'])) {
                 $('#action').val('Add');
                 $('#action_button').text('Add');
                 $('.text-danger').text('');
+                $('#photo').val('/img/users/'); // Set default value for photo field
                 $('#action_modal').modal('show');
             });
 
             $('#sample_form').on('submit', function(event) {
                 event.preventDefault();
-                if ($('#action').val() == "Add") {
-                    var formData = {
-                        'full_name': $('#full_name').val(),
-                        'email': $('#email').val(),
-                        'password': $('#password').val(),
-                        'job': $('#job').val(),
-                        'expected_position': $('#expected_position').val(),
-                        'photo': $('#photo').val()
-                    }
+                var formData = {
+                    'full_name': $('#full_name').val(),
+                    'email': $('#email').val(),
+                    'password': $('#password').val(),
+                    'job': $('#job').val(),
+                    'expected_position': $('#expected_position').val(),
+                    'photo': $('#photo').val()
+                };
 
-                    $.ajax({
-                        url: "http://localhost/web-porto/si-admin/api/users/create.php",
-                        method: "POST",
-                        data: JSON.stringify(formData),
-                        success: function(data) {
-                            $('#action_button').attr('disabled', false);
-                            $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
-                            $('#action_modal').modal('hide');
-                            $('#sample_data').DataTable().destroy();
-                            showAll();
-                        },
-                        error: function(err) {
-                            console.log(err);
-                        }
-                    });
-                } else if ($('#action').val() == "Update") {
-                    var formData = {
-                        'id': $('#id').val(),
-                        'full_name': $('#full_name').val(),
-                        'email': $('#email').val(),
-                        'password': $('#password').val(),
-                        'job': $('#job').val(),
-                        'expected_position': $('#expected_position').val(),
-                        'photo': $('#photo').val()
-                    }
+                var url = ($('#action').val() == "Add") ? "http://localhost/web-porto/si-admin/api/users/create.php" : "http://localhost/web-porto/si-admin/api/users/update.php";
+                var method = ($('#action').val() == "Add") ? "POST" : "PUT";
 
-                    $.ajax({
-                        url: "http://localhost/web-porto/si-admin/api/users/update.php",
-                        method: "PUT",
-                        data: JSON.stringify(formData),
-                        success: function(data) {
-                            $('#action_button').attr('disabled', false);
-                            $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
-                            $('#action_modal').modal('hide');
-                            $('#sample_data').DataTable().destroy();
-                            showAll();
-                        },
-                        error: function(err) {
-                            console.log(err);
-                        }
-                    });
-                }
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: JSON.stringify(formData),
+                    success: function(data) {
+                        $('#action_button').attr('disabled', false);
+                        $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+                        $('#action_modal').modal('hide');
+                        $('#sample_data').DataTable().destroy();
+                        showAll();
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
             });
         });
 
+        $(document).ready(function() {
+            // Panggil showAll() untuk pertama kali
+            showAll();
+
+            // Inisialisasi DataTable
+            $('#sample_data').DataTable({
+                columns: [{
+                        data: "id",
+                        title: "ID"
+                    }, // Tambahkan kolom ID di sini
+                    {
+                        data: "full_name",
+                        title: "Nama Lengkap"
+                    },
+                    {
+                        data: "email",
+                        title: "Email"
+                    },
+                    {
+                        data: "job",
+                        title: "Pekerjaan"
+                    },
+                    {
+                        data: "expected_position",
+                        title: "Posisi"
+                    },
+                    {
+                        data: "action",
+                        title: "Action"
+                    }
+                ]
+            });
+
+            // Event untuk tombol Add
+            $('#add_data').click(function() {
+                $('#dynamic_modal_title').text('Add Biodata User');
+                $('#sample_form')[0].reset();
+                $('#action').val('Add');
+                $('#action_button').text('Add');
+                $('.text-danger').text('');
+                $('#photo').val('/img/users/');
+                $('#action_modal').modal('show');
+            });
+
+            // Event untuk form submit
+            $('#sample_form').on('submit', function(event) {
+                event.preventDefault();
+                var formData = {
+                    'full_name': $('#full_name').val(),
+                    'email': $('#email').val(),
+                    'password': $('#password').val(),
+                    'job': $('#job').val(),
+                    'expected_position': $('#expected_position').val(),
+                    'photo': $('#photo').val()
+                };
+
+                var url = ($('#action').val() == "Add") ? "http://localhost/web-porto/si-admin/api/users/create.php" : "http://localhost/web-porto/si-admin/api/users/update.php";
+                var method = ($('#action').val() == "Add") ? "POST" : "PUT";
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: JSON.stringify(formData),
+                    success: function(data) {
+                        $('#action_button').attr('disabled', false);
+                        $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+                        $('#action_modal').modal('hide');
+                        $('#sample_data').DataTable().destroy();
+                        showAll(); // Panggil showAll() lagi setelah berhasil menambahkan/update data
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+        });
+
+        // Fungsi untuk menampilkan data
         function showAll() {
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
                 url: "http://localhost/web-porto/si-admin/api/users/read.php",
                 success: function(response) {
-                    // console.log(response);
                     var json = response.body;
                     var dataSet = [];
                     for (var i = 0; i < json.length; i++) {
                         var sub_array = {
+                            'id': json[i].id,
                             'full_name': json[i].full_name,
                             'email': json[i].email,
                             'job': json[i].job,
@@ -194,25 +248,7 @@ if (!isset($_SESSION['user'])) {
                         };
                         dataSet.push(sub_array);
                     }
-                    $('#sample_data').DataTable({
-                        data: dataSet,
-                        columns: [{
-                                data: "full_name"
-                            },
-                            {
-                                data: "email"
-                            },
-                            {
-                                data: "job"
-                            },
-                            {
-                                data: "expected_position"
-                            },
-                            {
-                                data: "action"
-                            }
-                        ]
-                    });
+                    $('#sample_data').DataTable().clear().rows.add(dataSet).draw(); // Update data di DataTable
                 },
                 error: function(err) {
                     console.log(err);
@@ -220,6 +256,7 @@ if (!isset($_SESSION['user'])) {
             });
         }
 
+        // Fungsi untuk menampilkan data satu item
         function showOne(id) {
             $('#dynamic_modal_title').text('Edit Biodata User');
             $('#sample_form')[0].reset();
@@ -247,6 +284,7 @@ if (!isset($_SESSION['user'])) {
             });
         }
 
+        // Fungsi untuk menghapus data
         function deleteOne(id) {
             var konfirmasiUser = confirm("Yakin untuk hapus data ?");
             if (konfirmasiUser) {
@@ -260,8 +298,8 @@ if (!isset($_SESSION['user'])) {
                         $("#action_button").attr("disabled", false);
                         $("#message").html('<div class="alert alert-success">' + data.message + "</div>");
                         $("#action_modal").modal("hide");
-                        $("#sample_data").DataTable().destroy();
-                        showAll();
+                        $('#sample_data').DataTable().destroy();
+                        showAll(); // Panggil showAll() lagi setelah berhasil menghapus data
                     },
                     error: function(err) {
                         console.log(err);
