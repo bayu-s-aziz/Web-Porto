@@ -294,8 +294,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelector('.nav-link[href="#home"]').classList.add("active");
     });
-  </script>
-  <script>
+
     $(document).ready(function() {
       //fungsi untuk merubah full_name dan job sesuai id
       showAll();
