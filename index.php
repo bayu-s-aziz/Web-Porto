@@ -296,7 +296,7 @@
     });
 
     $(document).ready(function() {
-      // Fungsi untuk merubah full_name dan job sesuai id
+      // Fungsi untuk merubah full_name dan job sesuai id serta mengambil user_id
       getUserIDAndShowAll();
 
       function getUserIDAndShowAll() {
@@ -306,7 +306,9 @@
           url: "http://localhost/web-porto/si-admin/api/getUserID.php",
           success: function(response) {
             if (response.user_id) {
-              showAll(response.user_id);
+              const userID = response.user_id;
+              showAll(userID);
+              fetchSkills(userID);
             } else {
               console.log(response.error);
             }
@@ -331,14 +333,9 @@
           }
         });
       }
-    });
 
-
-    $(document).ready(function() {
-      // fungsi untuk mengambil data dan menampilkan skills di progress bars
-      fetchSkills();
-
-      function fetchSkills() {
+      // Fungsi untuk mengambil data dan menampilkan skills di progress bars sesuai user_id
+      function fetchSkills(userID) {
         $.ajax({
           type: "GET",
           url: "http://localhost/web-porto/si-admin/api/skills/read.php",
@@ -346,19 +343,19 @@
             const skills = response.body;
 
             // Filter skills sesuai dengan user_id
-            const filteredSkills = skills.filter(skill => skill.user_id === 1);
+            const filteredSkills = skills.filter(skill => skill.user_id === userID);
 
             let skillsHtmlColumn1 = '';
             let skillsHtmlColumn2 = '';
 
             filteredSkills.forEach((skill, index) => {
               const skillHtml = `
-            <div class="mb-3">
-              <h6>${skill.skill_name}</h6>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${skill.rating}%" aria-valuenow="${skill.rating}" aria-valuemin="0" aria-valuemax="100">${skill.rating}%</div>
-              </div>
-            </div>`;
+                        <div class="mb-3">
+                            <h6>${skill.skill_name}</h6>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: ${skill.rating}%" aria-valuenow="${skill.rating}" aria-valuemin="0" aria-valuemax="100">${skill.rating}%</div>
+                            </div>
+                        </div>`;
 
               if (index % 2 === 0) {
                 skillsHtmlColumn1 += skillHtml;
