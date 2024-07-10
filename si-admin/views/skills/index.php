@@ -92,7 +92,6 @@ if (!isset($_SESSION['user'])) {
         </div>
     </div>
 
-
     <script>
         $(document).ready(function() {
             showAll();
@@ -156,6 +155,12 @@ if (!isset($_SESSION['user'])) {
                         }
                     });
                 }
+            });
+
+            // Event listener to auto-fill description based on skill_name
+            $('#skill_name').on('input', function() {
+                var skillName = $(this).val();
+                $('#description').val('Kemampuan dalam menguasai bidang ' + skillName);
             });
         });
 
