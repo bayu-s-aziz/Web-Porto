@@ -296,24 +296,43 @@
     });
 
     $(document).ready(function() {
-      //fungsi untuk merubah full_name dan job sesuai id
-      showAll();
+      // Fungsi untuk merubah full_name dan job sesuai id
+      getUserIDAndShowAll();
 
-      function showAll() {
+      function getUserIDAndShowAll() {
         $.ajax({
           type: "GET",
           contentType: "application/json",
-          url: "http://localhost/web-porto/si-admin/api/users/read.php?id=1",
+          url: "http://localhost/web-porto/si-admin/api/getUserID.php",
           success: function(response) {
-            $("#full_name").text(response.full_name); //mengubah elemen dengan .text dan .html
-            $("#job").text(
-              response.job + " | " + response.expected_position
-            );
+            if (response.user_id) {
+              showAll(response.user_id);
+            } else {
+              console.log(response.error);
+            }
           },
-          error: function(err) {},
+          error: function(err) {
+            console.log("Error fetching user ID", err);
+          }
+        });
+      }
+
+      function showAll(userID) {
+        $.ajax({
+          type: "GET",
+          contentType: "application/json",
+          url: "http://localhost/web-porto/si-admin/api/users/read.php?id=" + userID,
+          success: function(response) {
+            $("#full_name").text(response.full_name); // Mengubah elemen dengan .text dan .html
+            $("#job").text(response.job + " | " + response.expected_position);
+          },
+          error: function(err) {
+            console.log("Error fetching user data", err);
+          }
         });
       }
     });
+
 
     $(document).ready(function() {
       // fungsi untuk mengambil data dan menampilkan skills di progress bars
