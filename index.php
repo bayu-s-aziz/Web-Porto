@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-  <title>My Portfolio</title>
+
+  <title id="full_name">My Portofolio</title>
 </head>
 
 <body id="home">
@@ -299,6 +300,7 @@
           success: function(response) {
             $("#full_name").text(response.full_name);
             $("#job").text(response.job + " | " + response.expected_position);
+            document.title = "My Portfolio | " + response.full_name; // Mengubah judul halaman
 
             const photoURL = response.photo;
             //mencoba memuat photo
