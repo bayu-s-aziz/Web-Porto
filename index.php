@@ -106,12 +106,11 @@
 
   <!-- Jumbotron -->
   <section class="jumbotron text-center mb-3 vh-100">
-    <img src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark" />
+    <img id="user_avatar" src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark" />
     <h1 id="full_name" class="display-6 mt-5"></h1>
     <div class="single-divider"></div>
     <!-- tentukan ID dengan nama  -->
     <h3 id="job" class="lead"></h3>
-    </div>
   </section>
   <!-- End Jumbotron -->
 
@@ -296,7 +295,7 @@
     });
 
     $(document).ready(function() {
-      // Fungsi untuk merubah full_name dan job sesuai id serta mengambil user_id
+      // Fungsi untuk merubah photo, full_name, job sesuai id serta mengambil user_id
       getUserIDAndShowAll();
 
       function getUserIDAndShowAll() {
@@ -325,13 +324,34 @@
           contentType: "application/json",
           url: "http://localhost/web-porto/si-admin/api/users/read.php?id=" + userID,
           success: function(response) {
-            $("#full_name").text(response.full_name); // Mengubah elemen dengan .text dan .html
+            $("#full_name").text(response.full_name);
             $("#job").text(response.job + " | " + response.expected_position);
+
+            const photoURL = response.photo;
+            //mencoba memuat photo
+            loadImage(photoURL, function(isValid) {
+              if (isValid) {
+                $("img#user_avatar").attr("src", photoURL);
+              } else {
+                $("img#user_avatar").attr("src", "/web-porto/img/users/default_avatar.webp");
+              }
+            });
           },
           error: function(err) {
             console.log("Error fetching user data", err);
           }
         });
+      }
+
+      function loadImage(url, callback) {
+        const img = new Image();
+        img.onload = function() {
+          callback(true);
+        };
+        img.onerror = function() {
+          callback(false);
+        };
+        img.src = url;
       }
 
       // Fungsi untuk mengambil data dan menampilkan skills di progress bars sesuai user_id
