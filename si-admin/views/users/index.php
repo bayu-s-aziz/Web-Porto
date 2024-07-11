@@ -20,87 +20,85 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
-    <div class="container">
-        <div id="message">
-        </div>
-        <h1 class="mt-4 mb-4 text-center text-danger">USERS
-            CRUD</h1>
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col col-sm-9">USERS</div>
-                    <div class="col col-sm-3">
-                        <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
-                    </div>
+    <div id="message"></div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered" id="sample_data">
-                        <thead>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered w-100 text-center" id="sample_data">
+                    <thead>
+                        <tr>
                             <th>ID</th>
                             <th>Nama Lengkap</th>
                             <th>Email</th>
                             <th>Pekerjaan</th>
                             <th>Posisi</th>
                             <th>Action</th>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="modal" tabindex="-1" id="action_modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="post" id="sample_form">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="dynamic_modal_title"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label">Nama Lengkap</label>
-                                <input type="text" name="full_name" id="full_name" class="form-control" />
-                                <span id="full_name_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" />
-                                <span id="email_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" />
-                                <span id="password_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Pekerjaan</label>
-                                <input type="text" name="job" id="job" class="form-control" />
-                                <span id="job_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Posisi</label>
-                                <input type="text" name="expected_position" id="expected_position" class="form-control" />
-                                <span id="expected_position_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Foto</label>
-                                <input type="text" name="photo" id="photo" class="form-control" />
-                                <span id="photo_error" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" id="id" />
-                            <input type="hidden" name="action" id="action" value="Add" />
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="action_button">Add</button>
-                        </div>
-                    </form>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" id="action_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" id="sample_form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dynamic_modal_title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" name="full_name" id="full_name" class="form-control" />
+                            <span id="full_name_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" />
+                            <span id="email_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" />
+                            <span id="password_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Pekerjaan</label>
+                            <input type="text" name="job" id="job" class="form-control" />
+                            <span id="job_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Posisi</label>
+                            <input type="text" name="expected_position" id="expected_position" class="form-control" />
+                            <span id="expected_position_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Foto</label>
+                            <input type="text" name="photo" id="photo" class="form-control" />
+                            <span id="photo_error" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id" />
+                        <input type="hidden" name="action" id="action" value="Add" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="action_button">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <script>
@@ -190,7 +188,7 @@ if (!isset($_SESSION['user'])) {
                             'job': json[i].job,
                             'expected_position': json[i].expected_position,
                             'action': '<button onclick="showOne(' + json[i].id + ')" class="btn btn-sm btn-warning">Edit</button>' +
-                                '<button onclick="deleteOne(' + json[i].id + ')" class="btn btn-sm btn-danger">Delete</button>'
+                                '<button onclick="deleteOne(' + json[i].id + ')" class="btn btn-sm btn-danger mx-2">Delete</button>'
                         };
                         dataSet.push(sub_array);
                     }

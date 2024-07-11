@@ -52,8 +52,8 @@
             <img id="user_avatar" src="img/users/default_avatar.webp" alt="mini_avatar" width="40" height="40" class="rounded-circle " >
           </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="http://localhost/web-porto/si-admin/views/users/" target="_blank">Users</a></li>
-              <li><a class="dropdown-item" href="http://localhost/web-porto/si-admin/views/skills/" target="_blank">Skills</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#usersModal">Users</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skillsModal">Skills</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -367,7 +367,37 @@
       }
     });
   </script>
+  <!-- Modal User dan Skills -->
+  <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Users CRUD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Tempatkan konten dari users/index.php di sini -->
+          <iframe src="http://localhost/web-porto/si-admin/views/users/index.php" style=" border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Skills CRUD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Tempatkan konten dari skills/index.php di sini -->
+          <iframe src="http://localhost/web-porto/si-admin/views/skills/index.php" style=" border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Modal Users dan Skill -->
 </body>
 
 </html>

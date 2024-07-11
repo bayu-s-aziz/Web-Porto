@@ -20,77 +20,74 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
-    <div class="container">
-        <div id="message">
-        </div>
-        <h1 class="mt-4 mb-4 text-center text-danger">SKILLS CRUD</h1>
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col col-sm-9">SKILLS</div>
-                    <div class="col col-sm-3">
-                        <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered" id="sample_data">
-                        <thead>
-                            <tr>
-                                <th>User Id</th>
-                                <th>Skill Name</th>
-                                <th>Rating</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+
+    <div id="message"></div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
                 </div>
             </div>
         </div>
-        <div class="modal" tabindex="-1" id="action_modal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="post" id="sample_form">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="dynamic_modal_title"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label">User Id</label>
-                                <input type="text" name="user_id" id="user_id" class="form-control" />
-                                <span id="user_id_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Skill Name</label>
-                                <input type="skill_name" name="skill_name" id="skill_name" class="form-control" />
-                                <span id="skill_name_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Rating</label>
-                                <input type="rating" name="rating" id="rating" class="form-control" />
-                                <span id="rating_error" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <input type="text" name="description" id="description" class="form-control" />
-                                <span id="description_error" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" id="id" />
-                            <input type="hidden" name="action" id="action" value="Add" />
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="action_button">Add</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered w-100 text-center" id="sample_data">
+                    <thead>
+                        <tr>
+                            <th>User Id</th>
+                            <th>Skill Name</th>
+                            <th>Rating</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" id="action_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" id="sample_form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dynamic_modal_title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">User Id</label>
+                            <input type="text" name="user_id" id="user_id" class="form-control" />
+                            <span id="user_id_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Skill Name</label>
+                            <input type="skill_name" name="skill_name" id="skill_name" class="form-control" />
+                            <span id="skill_name_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <input type="rating" name="rating" id="rating" class="form-control" />
+                            <span id="rating_error" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input type="text" name="description" id="description" class="form-control" />
+                            <span id="description_error" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id" />
+                        <input type="hidden" name="action" id="action" value="Add" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="action_button">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         $(document).ready(function() {
