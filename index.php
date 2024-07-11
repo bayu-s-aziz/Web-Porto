@@ -78,7 +78,7 @@
 
   <!-- Jumbotron -->
   <section class="jumbotron text-center mb-3 vh-100">
-    <img id="user_avatar" src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark" />
+    <img id="user_avatar" src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark mt-5 mb-5" />
     <h1 id="full_name" class="display-6 mt-5"></h1>
     <div class="single-divider"></div>
     <!-- tentukan ID dengan nama  -->
