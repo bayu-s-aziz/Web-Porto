@@ -14,7 +14,7 @@
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
   <title>My Portfolio</title>
@@ -125,47 +125,47 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="d-flex justify-content-between align-items-center">
-                <img src="img/galery/image1.png" class="d-block mx-5" alt="program perpustakaan" />
-                <div class="caption">
+              <div class="d-flex flex-column align-items-center">
+                <img src="img/gallery/image1.jpg" class="d-block mx-5" alt="program perpustakaan" width="380" height="220" />
+                <div class="caption text-center mt-3">
                   <h5>Program Manajemen Perpustakaan</h5>
-                  <p>Program ini dibuat untuk memenuhi Tugas Besar Mata Kuliah Pemrograman Berbasis Objek Program Studi Sistem Informasi Universitas Galuh Ciamis. Dibuat menggunakan Apache Netbeans.</p>
+                  <p>ugas Besar Mata Kuliah Pemrograman Berbasis Objek Program Studi Sistem Informasi Universitas Galuh Ciamis.</p>
                 </div>
               </div>
             </div>
             <div class="carousel-item">
-              <div class="d-flex justify-content-between align-items-center">
-                <img src="img/galery/image2.png" class="d-block mx-5" alt="manmonster3d" />
-                <div class="caption">
+              <div class="d-flex flex-column align-items-center">
+                <img src="img/gallery/image2.jpg" class="d-block mx-5" alt="manmonster3d" width="380" height="220" />
+                <div class="caption text-center mt-3">
                   <h5>Man & Monster</h5>
                   <p>Ilustrasi 3D Permainan Bola Basket antara Manusia dan Monster. Ilustrasi 3D ini dibuat menggunakan Blender dan dirender dengan Blender Cycles</p>
                 </div>
               </div>
             </div>
             <div class="carousel-item">
-              <div class="d-flex justify-content-between align-items-center">
-                <img src="img/galery/image3.png" class="d-block mx-5" alt="gundam" />
-                <div class="caption">
+              <div class="d-flex flex-column align-items-center">
+                <img src="img/gallery/image3.jpg" class="d-block mx-5" alt="gundam" width="380" height="220" />
+                <div class="caption text-center mt-3">
                   <h5>Gundam 00 Raiser</h5>
                   <p>Ilustrasi 3D Gundam 00 Raiser. Ilustrasi 3D ini menggunakan Blender dan dirender menggunakan KeyShot.</p>
                 </div>
               </div>
             </div>
             <div class="carousel-item">
-              <div class="d-flex justify-content-between align-items-center">
-                <img src="img/galery/image4.png" class="d-block mx-5" alt="gapura" />
-                <div class="caption">
+              <div class="d-flex flex-column align-items-center">
+                <img src="img/gallery/image4.jpg" class="d-block mx-5" alt="gapura" width="380" height="220" />
+                <div class="caption text-center mt-3">
                   <h5>Ciamis Pagi</h5>
                   <p>Ilustrasi 3D Gapura Ciamis dipagi hari. Ilustrasi 3D ini dibuat dan dirender menggunakan Autodesk 3DS Max 2014.</p>
                 </div>
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="z-index: 1">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="z-index: 1">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -179,6 +179,7 @@
           </ol>
         </div>
       </div>
+    </div>
     </div>
   </section>
   <!-- Akhir Galeri -->

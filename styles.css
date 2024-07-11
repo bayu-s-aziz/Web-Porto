@@ -1,0 +1,125 @@
+.navbar {
+  height: 85px;
+  transition: height 0.3s ease;
+}
+
+.navbar-shrink {
+  height: 60px;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+  font-weight: normal;
+}
+
+.nav-item .nav-link.active {
+  font-weight: bold;
+}
+
+.jumbotron {
+  height: 100vh;
+  padding: 8rem;
+  background-color: #bfbfbf;
+}
+
+.single-divider {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  margin: 20px auto;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 2.5px;
+  background-color: black;
+  margin: 0 1em;
+}
+
+.one-line h2 {
+  margin: 0;
+}
+
+#gallery {
+  height: 100vh;
+  padding: 5rem;
+  background-color: #bfbfbf;
+  position: relative;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+  left: 0px;
+}
+
+.carousel-control-next {
+  right: 0px;
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: 0%;
+  transform: translateY(-50%);
+  bottom: -100px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 fill%3D%27%23000000%27 viewBox%3D%270 0 16 16%27%3E%3Cpath fill-rule%3D%27evenodd%27 d%3D%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E");
+}
+
+/* Ubah warna panah next */
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 fill%3D%27%23000000%27 viewBox%3D%270 0 16 16%27%3E%3Cpath fill-rule%3D%27evenodd%27 d%3D%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E");
+}
+
+.carousel-indicators li {
+  background-color: #7a7a7a; /* Warna indikator tidak aktif */
+}
+
+/* Mengubah warna indikator yang aktif */
+.carousel-indicators .active {
+  background-color: #000000; /* Warna indikator aktif */
+}
+
+/* Menambahkan efek hover pada indikator */
+.carousel-indicators li:hover {
+  background-color: #292929; /* Warna saat di-hover */
+}
+
+#about {
+  padding: 5rem;
+  height: 100vh;
+}
+
+#contact {
+  padding: 3rem;
+  height: 90vh;
+}
+
+footer {
+  height: 30px;
+  background-color: #5f5f5f;
+}
