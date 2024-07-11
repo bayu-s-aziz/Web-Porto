@@ -114,7 +114,7 @@ if (!isset($_SESSION['user'])) {
                 $('#action').val('Add');
                 $('#action_button').text('Add');
                 $('.text-danger').text('');
-                $('#photo').val('/img/users/'); // Set default value for photo field
+                $('#photo').val('/web-porto/img/users/'); // Set default value for photo field
                 $('#action_modal').modal('show');
             });
 
@@ -190,7 +190,7 @@ if (!isset($_SESSION['user'])) {
                 $('#action').val('Add');
                 $('#action_button').text('Add');
                 $('.text-danger').text('');
-                $('#photo').val('/img/users/');
+                $('#photo').val('/web-porto/img/users/');
                 $('#action_modal').modal('show');
             });
 
