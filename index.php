@@ -18,7 +18,7 @@
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
-  <title id="full_name">My Portofolio</title>
+  <title id="page_title">My Portofolio</title>
 </head>
 
 <body id="home">
