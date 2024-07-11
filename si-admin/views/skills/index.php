@@ -24,8 +24,14 @@ if (!isset($_SESSION['user'])) {
     <div id="message"></div>
     <div class="card">
         <div class="card-header">
-            <div class="row">
-                <div class="col">
+            <div class="row align-items-center">
+                <div class="col-md-2 d-flex justify-content-center">
+                    <div id="dataTables_length"></div>
+                </div>
+                <div class="col-md-8 d-flex justify-content-end">
+                    <div id="dataTables_filter"></div>
+                </div>
+                <div class="col-md-2 d-flex justify-content-center">
                     <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
                 </div>
             </div>
@@ -198,7 +204,27 @@ if (!isset($_SESSION['user'])) {
                             {
                                 data: "action"
                             }
-                        ]
+                        ],
+                        language: {
+                            // Ubah teks "Show entries" di sini
+                            paginate: {
+                                first: 'First',
+                                last: 'Last',
+                                next: 'Next',
+                                previous: 'Previous'
+                            },
+                            lengthMenu: 'Show <select class="form-select form-select-sm">' +
+                                '<option value="5">5</option>' +
+                                '<option value="10">10</option>' +
+                                '<option value="25">25</option>' +
+                                '<option value="-1">All</option>' +
+                                '</select>'
+                        },
+                        initComplete: function() {
+                            // Move the length and filter elements to the card header
+                            $('#sample_data_length').appendTo('#dataTables_length');
+                            $('#sample_data_filter').appendTo('#dataTables_filter');
+                        }
                     });
                 },
                 error: function(err) {
