@@ -106,8 +106,8 @@
 
   <!-- Jumbotron -->
   <section class="jumbotron text-center mb-3 vh-100">
-    <img src="img/avatar2.png" alt="avatar" />
-    <h1 id="full_name" class="display-6"></h1>
+    <img src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark" />
+    <h1 id="full_name" class="display-6 mt-5"></h1>
     <div class="single-divider"></div>
     <!-- tentukan ID dengan nama  -->
     <h3 id="job" class="lead"></h3>
