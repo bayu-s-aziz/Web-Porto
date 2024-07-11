@@ -262,7 +262,7 @@ if (!isset($_SESSION['user'])) {
                     $('#password').val(response.password);
                     $('#job').val(response.job);
                     $('#expected_position').val(response.expected_position);
-                    $('#photo').val('/web-porto/img/users/'); // Set default value for photo field
+                    $('#photo').val(response.photo); // Set default value for photo field
                 },
                 error: function(err) {
                     console.log(err);
