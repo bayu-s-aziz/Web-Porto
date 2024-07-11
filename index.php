@@ -129,7 +129,7 @@
                 <img src="img/gallery/image1.jpg" class="d-block mx-5" alt="program perpustakaan" width="380" height="220" />
                 <div class="caption text-center mt-3">
                   <h5>Program Manajemen Perpustakaan</h5>
-                  <p>ugas Besar Mata Kuliah Pemrograman Berbasis Objek Program Studi Sistem Informasi Universitas Galuh Ciamis.</p>
+                  <p>Tugas Besar Mata Kuliah Pemrograman Berbasis Objek Program Studi Sistem Informasi Universitas Galuh Ciamis.</p>
                 </div>
               </div>
             </div>
