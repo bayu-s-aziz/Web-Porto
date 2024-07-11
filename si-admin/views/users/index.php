@@ -39,14 +39,12 @@ if (!isset($_SESSION['user'])) {
             <div class="table-responsive">
                 <table class="table table-striped table-bordered w-100 text-center" id="sample_data">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama Lengkap</th>
-                            <th>Email</th>
-                            <th>Pekerjaan</th>
-                            <th>Posisi</th>
-                            <th>Action</th>
-                        </tr>
+                        <th>ID</th>
+                        <th>Nama Lengkap</th>
+                        <th>Email</th>
+                        <th>Pekerjaan</th>
+                        <th>Posisi</th>
+                        <th>Action</th>
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -173,127 +171,128 @@ if (!isset($_SESSION['user'])) {
                     });
                 }
             });
-
-            function showAll() {
-                $.ajax({
-                    type: "GET",
-                    contentType: "application/json",
-                    url: "http://localhost/web-porto/si-admin/api/users/read.php",
-                    success: function(response) {
-                        var json = response.body;
-                        var dataSet = [];
-                        for (var i = 0; i < json.length; i++) {
-                            var sub_array = {
-                                'id': json[i].id,
-                                'full_name': json[i].full_name,
-                                'email': json[i].email,
-                                'job': json[i].job,
-                                'expected_position': json[i].expected_position,
-                                'action': '<button onclick="showOne(' + json[i].id + ')" class="btn btn-sm btn-warning">Edit</button>' +
-                                    '<button onclick="deleteOne(' + json[i].id + ')" class="btn btn-sm btn-danger mx-2">Delete</button>'
-                            };
-                            dataSet.push(sub_array);
-                        }
-                        $('#sample_data').DataTable({
-                            data: dataSet,
-                            columns: [{
-                                    data: "id"
-                                },
-                                {
-                                    data: "full_name"
-                                },
-                                {
-                                    data: "email"
-                                },
-                                {
-                                    data: "job"
-                                },
-                                {
-                                    data: "expected_position"
-                                },
-                                {
-                                    data: "action"
-                                }
-                            ],
-                            language: {
-                                // Ubah teks "Show entries" di sini
-                                paginate: {
-                                    first: 'First',
-                                    last: 'Last',
-                                    next: 'Next',
-                                    previous: 'Previous'
-                                },
-                                lengthMenu: 'Show <select class="form-select form-select-sm">' +
-                                    '<option value="5">5</option>' +
-                                    '<option value="10">10</option>' +
-                                    '<option value="25">25</option>' +
-                                    '<option value="-1">All</option>' +
-                                    '</select>'
-                            },
-                            initComplete: function() {
-                                // Move the length and filter elements to the card header
-                                $('#sample_data_length').appendTo('#dataTables_length');
-                                $('#sample_data_filter').appendTo('#dataTables_filter');
-                            }
-                        });
-                    },
-                    error: function(err) {
-                        console.log(err);
-                    }
-                });
-            }
-
-            function showOne(id) {
-                $('#dynamic_modal_title').text('Edit Biodata User');
-                $('#sample_form')[0].reset();
-                $('#action').val('Update');
-                $('#action_button').text('Update');
-                $('.text-danger').text('');
-                $('#action_modal').modal('show');
-
-                $.ajax({
-                    type: "GET",
-                    contentType: "application/json",
-                    url: "http://localhost/web-porto/si-admin/api/users/read.php?id=" + id,
-                    success: function(response) {
-                        $('#id').val(response.id);
-                        $('#full_name').val(response.full_name);
-                        $('#email').val(response.email);
-                        $('#password').val(response.password);
-                        $('#job').val(response.job);
-                        $('#expected_position').val(response.expected_position);
-                        $('#photo').val('/web-porto/img/users/'); // Set default value for photo field
-                    },
-                    error: function(err) {
-                        console.log(err);
-                    }
-                });
-            }
-
-            function deleteOne(id) {
-                var konfirmasiUser = confirm("Yakin untuk hapus data ?");
-                if (konfirmasiUser) {
-                    $.ajax({
-                        url: "http://localhost/web-porto/si-admin/api/users/delete.php",
-                        method: "DELETE",
-                        data: JSON.stringify({
-                            id: id,
-                        }),
-                        success: function(data) {
-                            $("#action_button").attr("disabled", false);
-                            $("#message").html('<div class="alert alert-success">' + data.message + "</div>");
-                            $("#action_modal").modal("hide");
-                            $("#sample_data").DataTable().destroy();
-                            showAll();
-                        },
-                        error: function(err) {
-                            console.log(err);
-                            $("#message").html('<div class="alert alert-danger">' + err.responseJSON.message + '</div>');
-                        },
-                    });
-                }
-            }
         });
+
+
+        function showAll() {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                url: "http://localhost/web-porto/si-admin/api/users/read.php",
+                success: function(response) {
+                    var json = response.body;
+                    var dataSet = [];
+                    for (var i = 0; i < json.length; i++) {
+                        var sub_array = {
+                            'id': json[i].id,
+                            'full_name': json[i].full_name,
+                            'email': json[i].email,
+                            'job': json[i].job,
+                            'expected_position': json[i].expected_position,
+                            'action': '<button onclick="showOne(' + json[i].id + ')" class="btn btn-sm btn-warning">Edit</button>' +
+                                '<button onclick="deleteOne(' + json[i].id + ')" class="btn btn-sm btn-danger mx-2">Delete</button>'
+                        };
+                        dataSet.push(sub_array);
+                    }
+                    $('#sample_data').DataTable({
+                        data: dataSet,
+                        columns: [{
+                                data: "id"
+                            },
+                            {
+                                data: "full_name"
+                            },
+                            {
+                                data: "email"
+                            },
+                            {
+                                data: "job"
+                            },
+                            {
+                                data: "expected_position"
+                            },
+                            {
+                                data: "action"
+                            }
+                        ],
+                        language: {
+                            // Ubah teks "Show entries" di sini
+                            paginate: {
+                                first: 'First',
+                                last: 'Last',
+                                next: 'Next',
+                                previous: 'Previous'
+                            },
+                            lengthMenu: 'Show <select class="form-select form-select-sm">' +
+                                '<option value="5">5</option>' +
+                                '<option value="10">10</option>' +
+                                '<option value="25">25</option>' +
+                                '<option value="-1">All</option>' +
+                                '</select>'
+                        },
+                        initComplete: function() {
+                            // Move the length and filter elements to the card header
+                            $('#sample_data_length').appendTo('#dataTables_length');
+                            $('#sample_data_filter').appendTo('#dataTables_filter');
+                        }
+                    });
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function showOne(id) {
+            $('#dynamic_modal_title').text('Edit Biodata User');
+            $('#sample_form')[0].reset();
+            $('#action').val('Update');
+            $('#action_button').text('Update');
+            $('.text-danger').text('');
+            $('#action_modal').modal('show');
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                url: "http://localhost/web-porto/si-admin/api/users/read.php?id=" + id,
+                success: function(response) {
+                    $('#id').val(response.id);
+                    $('#full_name').val(response.full_name);
+                    $('#email').val(response.email);
+                    $('#password').val(response.password);
+                    $('#job').val(response.job);
+                    $('#expected_position').val(response.expected_position);
+                    $('#photo').val('/web-porto/img/users/'); // Set default value for photo field
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function deleteOne(id) {
+            var konfirmasiUser = confirm("Yakin untuk hapus data ?");
+            if (konfirmasiUser) {
+                $.ajax({
+                    url: "http://localhost/web-porto/si-admin/api/users/delete.php",
+                    method: "DELETE",
+                    data: JSON.stringify({
+                        id: id,
+                    }),
+                    success: function(data) {
+                        $("#action_button").attr("disabled", false);
+                        $("#message").html('<div class="alert alert-success">' + data.message + "</div>");
+                        $("#action_modal").modal("hide");
+                        $("#sample_data").DataTable().destroy();
+                        showAll();
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        $("#message").html('<div class="alert alert-danger">' + err.responseJSON.message + '</div>');
+                    },
+                });
+            }
+        }
     </script>
 </body>
 
