@@ -21,34 +21,6 @@
 </head>
 
 <body id="home">
-  <!--Navbar-->
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#home">My Portofolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-        </div>
-      </div>
-    </div>
-  </nav> -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">My Portfolio</a>
@@ -76,9 +48,9 @@
             // Jika sudah login, tampilkan tombol Menu
             echo '
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menu
-            </a>
+            <a id="navbarDropdown" href="#" class="d-block link-light text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="user_avatar" src="img/users/default_avatar.webp" alt="mini_avatar" width="40" height="40" class="rounded-circle " >
+          </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="http://localhost/web-porto/si-admin/views/users/" target="_blank">Users</a></li>
               <li><a class="dropdown-item" href="http://localhost/web-porto/si-admin/views/skills/" target="_blank">Skills</a></li>
