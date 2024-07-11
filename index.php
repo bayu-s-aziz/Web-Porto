@@ -80,15 +80,15 @@
   <!-- Jumbotron -->
   <section class="jumbotron text-center mb-3 vh-100">
     <img id="user_avatar" src="img/users/default_avatar.webp" alt="avatar" width="200" class="rounded-circle img-thumbnail bg-dark mt-5 mb-5" />
-    <h1 id="full_name" class="display-7 mt-5"></h1>
+    <h1 id="full_name" class="display-7 mt-5">Anda Belum Login!</h1>
     <div class="single-divider"></div>
     <!-- tentukan ID dengan nama  -->
-    <h2 id="job" class="lead" style="font-weight: bold;"></h2>
+    <h2 id="job" class="lead" style="font-weight: bold;">Silahkan login terlebih dahulu.</h2>
   </section>
   <!-- End Jumbotron -->
 
   <!-- About -->
-  <section id="about">
+  <section id="about" <?php if (!isset($_SESSION['user'])) echo 'style="display: none;"'; ?>>
     <div class="container">
       <div class="row text-center">
         <h2 class="divider line one-line" content>About Me</h2>
@@ -117,7 +117,7 @@
   <!-- Akhir About -->
 
   <!-- Gallery -->
-  <section id="gallery">
+  <section id="gallery" <?php if (!isset($_SESSION['user'])) echo 'style="display: none;"'; ?>>
     <div class="container">
       <div class="row text-center mb-0">
         <h2 class="divider line one-line" content>My Gallery</h2>
