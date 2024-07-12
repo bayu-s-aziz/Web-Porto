@@ -230,7 +230,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 
   <script>
-    // Add event listener to window for scroll event
+    // event listener untuk scroll
     window.addEventListener("scroll", function() {
       var navbar = document.querySelector(".navbar");
       if (window.scrollY > 0) {
@@ -240,7 +240,7 @@
         navbar.classList.remove("navbar-shrink");
       }
 
-      // Check which section is in the viewport
+      // Cek section yang aktif
       const sections = document.querySelectorAll("section");
       const navLinks = document.querySelectorAll(".nav-link");
 
@@ -256,14 +256,14 @@
         }
       });
 
-      // If no other section is active, make sure Home is still active
+      // jadikan section home sebagai active,jika tidak ada yang aktif
       if (!activeSection) {
         navLinks.forEach((link) => link.classList.remove("active"));
         document.querySelector('.nav-link[href="#home"]').classList.add("active");
       }
     });
 
-    // Ensure Home link is active on page load
+    // Menjadikan Home sebagai section yang aktif ketika memuat halaman
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelector('.nav-link[href="#home"]').classList.add("active");
     });
