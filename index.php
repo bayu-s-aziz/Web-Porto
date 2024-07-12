@@ -269,10 +269,28 @@
     });
 
     $(document).ready(function() {
-      // Menggunakan id dan user_id langsung
-      const userID = 8;
-      showAll(userID);
-      fetchSkills(userID);
+      // Fungsi untuk merubah photo, full_name, job sesuai id serta mengambil user_id
+      getUserIDAndShowAll();
+
+      function getUserIDAndShowAll() {
+        $.ajax({
+          type: "GET",
+          contentType: "application/json",
+          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/getUserID.php",
+          success: function(response) {
+            if (response.user_id) {
+              const userID = response.user_id;
+              showAll(userID);
+              fetchSkills(userID);
+            } else {
+              console.log(response.error);
+            }
+          },
+          error: function(err) {
+            console.log("Error fetching user ID", err);
+          }
+        });
+      }
 
       function showAll(userID) {
         $.ajax({
@@ -283,9 +301,8 @@
             $("#full_name").text(response.full_name);
             $("#job").text(response.job + " | " + response.expected_position);
             document.title = "My Portfolio | " + response.full_name; // Mengubah judul halaman
-
             const photoURL = response.photo;
-            // mencoba memuat photo
+            //mencoba memuat photo
             loadImage(photoURL, function(isValid) {
               if (isValid) {
                 $("img#user_avatar").attr("src", photoURL);
@@ -310,39 +327,31 @@
         };
         img.src = url;
       }
-
       // Fungsi untuk mengambil data dan menampilkan skills di progress bars sesuai user_id
       function fetchSkills(userID) {
         $.ajax({
           type: "GET",
-          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/read.php?user_id=" + userID,
+          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/read.php",
           success: function(response) {
-            console.log("Skills data:", response); // Log respons dari API
-
             const skills = response.body;
-
-            // Filter skills sesuai dengan user_id (tidak diperlukan jika API sudah mengembalikan data yang benar)
-            // const filteredSkills = skills.filter(skill => skill.user_id === userID);
-
+            // Filter skills sesuai dengan user_id
+            const filteredSkills = skills.filter(skill => skill.user_id === userID);
             let skillsHtmlColumn1 = '';
             let skillsHtmlColumn2 = '';
-
-            skills.forEach((skill, index) => {
+            filteredSkills.forEach((skill, index) => {
               const skillHtml = `
-            <div class="mb-3">
-              <h6>${skill.skill_name}</h6>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${skill.rating}%" aria-valuenow="${skill.rating}" aria-valuemin="0" aria-valuemax="100">${skill.rating}%</div>
-              </div>
-            </div>`;
-
+                        <div class="mb-3">
+                            <h6>${skill.skill_name}</h6>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: ${skill.rating}%" aria-valuenow="${skill.rating}" aria-valuemin="0" aria-valuemax="100">${skill.rating}%</div>
+                            </div>
+                        </div>`;
               if (index % 2 === 0) {
                 skillsHtmlColumn1 += skillHtml;
               } else {
                 skillsHtmlColumn2 += skillHtml;
               }
             });
-
             $('#skills-column-1').html(skillsHtmlColumn1);
             $('#skills-column-2').html(skillsHtmlColumn2);
           },
