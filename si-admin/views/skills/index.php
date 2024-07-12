@@ -115,7 +115,7 @@ if (!isset($_SESSION['user'])) {
                         'user_id': $('#user_id').val(),
                         'skill_name': $('#skill_name').val(),
                         'rating': $('#rating').val(),
-                        'description': $('#description').val("Keahlian dalam menguasai bidang " + skillName)
+                        'description': $('#description').val()
                     }
 
                     $.ajax({
@@ -160,11 +160,6 @@ if (!isset($_SESSION['user'])) {
                 }
             });
 
-            // Event listener to auto-fill description based on skill_name
-            $('#skill_name').on('input', function() {
-                var skillName = $(this).val();
-                $('#description').val("Keahlian dalam menguasai bidang " + skillName);
-            });
         });
 
         function showAll() {
