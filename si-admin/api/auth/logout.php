@@ -21,7 +21,7 @@ if ($user->prosesLogout()) {
     echo json_encode("You have successfully logged out.");
 
     // Redirect to homepage
-    header("Location: http://localhost/web-porto/");
+    header("Location: https://bayusa.amisbudi.cloud/web-porto/");
     exit();
 } else {
     // Logout failed

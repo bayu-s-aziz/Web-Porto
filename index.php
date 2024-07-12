@@ -58,7 +58,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="http://localhost/web-porto/si-admin/api/auth/logout.php">Logout</a></li>
+              <li><a class="dropdown-item" href="https://bayusa.amisbudi.cloud/web-porto/si-admin/api/auth/logout.php">Logout</a></li>
             </ul>
           </li>
           ';
@@ -66,7 +66,7 @@
             // Jika belum login, tampilkan tombol Login
             echo '
           <li class="nav-item">
-            <a href="http://localhost/web-porto/si-admin/views/login/" class="btn btn-outline-light me-2" id="buttonLogin">Login</a>
+            <a href="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/login/" class="btn btn-outline-light me-2" id="buttonLogin">Login</a>
           </li>
           ';
           }
@@ -276,7 +276,7 @@
         $.ajax({
           type: "GET",
           contentType: "application/json",
-          url: "http://localhost/web-porto/si-admin/api/getUserID.php",
+          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/getUserID.php",
           success: function(response) {
             if (response.user_id) {
               const userID = response.user_id;
@@ -296,7 +296,7 @@
         $.ajax({
           type: "GET",
           contentType: "application/json",
-          url: "http://localhost/web-porto/si-admin/api/users/read.php?id=" + userID,
+          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/users/read.php?id=" + userID,
           success: function(response) {
             $("#full_name").text(response.full_name);
             $("#job").text(response.job + " | " + response.expected_position);
@@ -333,7 +333,7 @@
       function fetchSkills(userID) {
         $.ajax({
           type: "GET",
-          url: "http://localhost/web-porto/si-admin/api/skills/read.php",
+          url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/read.php",
           success: function(response) {
             const skills = response.body;
 
@@ -379,7 +379,7 @@
         </div>
         <div class="modal-body">
           <!-- Tempatkan konten dari users/index.php di sini -->
-          <iframe src="http://localhost/web-porto/si-admin/views/users/index.php" style=" border: none;"></iframe>
+          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/users/index.php" style=" border: none;"></iframe>
         </div>
       </div>
     </div>
@@ -394,7 +394,7 @@
         </div>
         <div class="modal-body">
           <!-- Tempatkan konten dari skills/index.php di sini -->
-          <iframe src="http://localhost/web-porto/si-admin/views/skills/index.php" style=" border: none;"></iframe>
+          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/skills/index.php" style=" border: none;"></iframe>
         </div>
       </div>
     </div>

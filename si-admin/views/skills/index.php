@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-    return header('Location: http://localhost/web-porto/si-admin/views/login/');
+    return header('Location: https://bayusa.amisbudi.cloud/web-porto/si-admin/views/login/');
 }
 ?>
 <!doctype html>
@@ -119,7 +119,7 @@ if (!isset($_SESSION['user'])) {
                     }
 
                     $.ajax({
-                        url: "http://localhost/web-porto/si-admin/api/skills/create.php",
+                        url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/create.php",
                         method: "POST",
                         data: JSON.stringify(formData),
                         success: function(data) {
@@ -143,7 +143,7 @@ if (!isset($_SESSION['user'])) {
                     }
 
                     $.ajax({
-                        url: "http://localhost/web-porto/si-admin/api/skills/update.php",
+                        url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/update.php",
                         method: "PUT",
                         data: JSON.stringify(formData),
                         success: function(data) {
@@ -171,7 +171,7 @@ if (!isset($_SESSION['user'])) {
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "http://localhost/web-porto/si-admin/api/skills/read.php",
+                url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/read.php",
                 success: function(response) {
                     // console.log(response);
                     var json = response.body;
@@ -244,7 +244,7 @@ if (!isset($_SESSION['user'])) {
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "http://localhost/web-porto/si-admin/api/skills/read.php?id=" + id,
+                url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/read.php?id=" + id,
                 success: function(response) {
                     $('#id').val(response.id);
                     $('#user_id').val(response.user_id);
@@ -262,7 +262,7 @@ if (!isset($_SESSION['user'])) {
             var konfirmasiSkill = confirm("Yakin untuk hapus data ?");
             if (konfirmasiSkill) {
                 $.ajax({
-                    url: "http://localhost/web-porto/si-admin/api/skills/delete.php",
+                    url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/skills/delete.php",
                     method: "DELETE",
                     data: JSON.stringify({
                         id: id,

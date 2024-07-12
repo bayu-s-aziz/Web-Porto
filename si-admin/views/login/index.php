@@ -46,12 +46,12 @@
                 }
 
                 $.ajax({
-                    url: "http://localhost/web-porto/si-admin/api/auth/login.php",
+                    url: "https://bayusa.amisbudi.cloud/web-porto/si-admin/api/auth/login.php",
                     method: "POST",
                     data: JSON.stringify(formData),
                     success: function(data) {
                         $('#action_button').attr('disabled', false);
-                        window.location.href = 'http://localhost/web-porto/';
+                        window.location.href = 'https://bayusa.amisbudi.cloud/web-porto/';
                     },
                     error: function(err) {
                         console.log(err);
