@@ -18,7 +18,7 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="login-container border p-4 rounded">
-            <div id="message"></div>
+
             <h2 class="text-center mb-4">Login</h2>
             <form class="row g-3" id="sample_form">
                 <div class="col-12">
@@ -29,6 +29,7 @@
                     <label for="pass" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" required>
                 </div>
+                <div id="message"></div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary w-100" id="action_button">Sign In</button>
                 </div>
