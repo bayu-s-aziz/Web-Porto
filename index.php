@@ -222,6 +222,38 @@
   </footer>
   <!-- Akhir Footer -->
 
+  <!-- Modal User dan Skills -->
+  <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Users CRUD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Tempatkan konten dari users/index.php di sini -->
+          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/users/index.php" style=" border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Skills CRUD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Tempatkan konten dari skills/index.php di sini -->
+          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/skills/index.php" style=" border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Modal Users dan Skill -->
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -362,37 +394,7 @@
       }
     });
   </script>
-  <!-- Modal User dan Skills -->
-  <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Users CRUD</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Tempatkan konten dari users/index.php di sini -->
-          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/users/index.php" style=" border: none;"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100" id="usersModalLabel" style="color: red">Skills CRUD</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Tempatkan konten dari skills/index.php di sini -->
-          <iframe src="https://bayusa.amisbudi.cloud/web-porto/si-admin/views/skills/index.php" style=" border: none;"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Akhir Modal Users dan Skill -->
+  
 </body>
 
 </html>
